@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "proposal.html",
+    "href": "proposal.html",
+    "title": "SoleMate",
+    "section": "",
+    "text": "In an era where fashion and comfort go hand in hand, the SoleMate shoe recommendation system aims to revolutionize the way people choose their footwear. Footwear selection is a highly subjective and personal decision, influenced by various factors like preferred brand, price and discount, lifestyle, and fashion preferences. To address this, our project aims to develop a state-of-the-art machine learning-based recommendation system to assist individuals in finding the perfect pair of shoes that suits their unique needs.\nTo deliver a better seamless and highly personalized shopping experience for shoe enthusiasts, we came up with idea of SoleMate. By leveraging the power of machine learning algorithms, our system will take into account a wide array of factors to generate tailored shoe recommendations for users.\n\n\nCode\n#&gt; Installing necessary libraries \n\nlibrary(tidyverse)\n\n#&gt; Loading the Dataset - solemate\n\nsolemate &lt;- read.csv(\"data/solemate.csv\")\n\n\nThe dataset comes from the Kaggle Database. The dataset consists of 3268 products from Nike and Adidas with various features of information including their ratings, discount, sales price, listed price, product description, and the number of reviews. With this sizeable and diverse sample of shoes from these two most popular brands, this dataset promises to serve as a foundational resource for building the SoleMate system. The table representing the features and their description is presented below.\n\n\n\nFeature\nDescription\n\n\n\n\nProduct Name\nName of the product\n\n\nProduct ID\nUnique product ID\n\n\nListing Price\nPrice of the product as listed\n\n\nSales Price\nPrice after applying discount rate\n\n\nDiscount\nDiscount percent provided on the product\n\n\nBrand\nBrand of the product\n\n\nDescription\nDescription of the product\n\n\nRating\nRating provided for the product by users (out of 5)\n\n\nReviews\nNumber of reviews provided on the product\n\n\nLast visited\nLast visit on the product by a customer"
+  },
+  {
+    "objectID": "proposal.html#dataset",
+    "href": "proposal.html#dataset",
+    "title": "SoleMate",
+    "section": "",
+    "text": "In an era where fashion and comfort go hand in hand, the SoleMate shoe recommendation system aims to revolutionize the way people choose their footwear. Footwear selection is a highly subjective and personal decision, influenced by various factors like preferred brand, price and discount, lifestyle, and fashion preferences. To address this, our project aims to develop a state-of-the-art machine learning-based recommendation system to assist individuals in finding the perfect pair of shoes that suits their unique needs.\nTo deliver a better seamless and highly personalized shopping experience for shoe enthusiasts, we came up with idea of SoleMate. By leveraging the power of machine learning algorithms, our system will take into account a wide array of factors to generate tailored shoe recommendations for users.\n\n\nCode\n#&gt; Installing necessary libraries \n\nlibrary(tidyverse)\n\n#&gt; Loading the Dataset - solemate\n\nsolemate &lt;- read.csv(\"data/solemate.csv\")\n\n\nThe dataset comes from the Kaggle Database. The dataset consists of 3268 products from Nike and Adidas with various features of information including their ratings, discount, sales price, listed price, product description, and the number of reviews. With this sizeable and diverse sample of shoes from these two most popular brands, this dataset promises to serve as a foundational resource for building the SoleMate system. The table representing the features and their description is presented below.\n\n\n\nFeature\nDescription\n\n\n\n\nProduct Name\nName of the product\n\n\nProduct ID\nUnique product ID\n\n\nListing Price\nPrice of the product as listed\n\n\nSales Price\nPrice after applying discount rate\n\n\nDiscount\nDiscount percent provided on the product\n\n\nBrand\nBrand of the product\n\n\nDescription\nDescription of the product\n\n\nRating\nRating provided for the product by users (out of 5)\n\n\nReviews\nNumber of reviews provided on the product\n\n\nLast visited\nLast visit on the product by a customer"
+  },
+  {
+    "objectID": "proposal.html#question",
+    "href": "proposal.html#question",
+    "title": "SoleMate",
+    "section": "Question",
+    "text": "Question\nHow do you find the perfect Solemate?"
+  },
+  {
+    "objectID": "proposal.html#analysis-plan",
+    "href": "proposal.html#analysis-plan",
+    "title": "SoleMate",
+    "section": "Analysis plan",
+    "text": "Analysis plan\nBy following the below analysis plan, the project can efficiently implement a robust recommendation system that enhances the footwear shopping experience for users.\n\nExploratory Data Analysis (EDA):\n\nAcquire and load the dataset for both shoe brands.\nExplore the dataset to understand its structure and the variables it contains.\nVisualize data distributions, identify outliers, and check for missing values.\nAnalyze customer reviews and ratings to gain insights into user preferences.\n\nData Preprocessing:\n\nClean the data by addressing missing values and outliers.\nTransform categorical variables into numerical representations (e.g., one-hot encoding for brand, material, and style).\nSplit the data into training and testing sets for model evaluation.\n\nData Visualization\n\nVisualizing the favourite shoe brand based on the customer rating and the number of reviews.\n\nFeature Engineering:\n\nCreate additional features if necessary, such as sentiment analysis scores for customer reviews.\n\nTraining and Testing:\n\nSelect machine learning algorithms suitable for recommendation tasks, such as collaborative filtering, content-based filtering, and hybrid methods.\nTrain multiple recommendation models on the training data.\nEvaluate model performance using testing data.\n\nModel Evaluation:\n\nUtilize metrics like Mean Absolute Error (MAE), Root Mean Square Error (RMSE), and accuracy to assess each model’s performance.\nCompare the results to determine which models are the most effective in making recommendations.\n\nChoosing the Best Model:\n\nSelect the model with the lowest error or highest accuracy, depending on the chosen evaluation metric."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by MineCrafters For INFO 523 - Data Mining and Discovery at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nAslam Sheik Dawood: Graduate student, Data Science, University of Arizona\nHari Dave: Graduate student, Data Science, University of Arizona\nPartha Koundinya P: Graduate student, Data Science, University of Arizona\nSarthak Miglani: Graduate student, Data Science, University of Arizona\nVinu Kevin Diesel: Graduate student, Data Science, University of Arizona"
+  },
+  {
+    "objectID": "presentation.html",
+    "href": "presentation.html",
+    "title": "Project title",
+    "section": "",
+    "text": "The presentation is created using the Quarto CLI\n## sets the start of a new slide\n\n\n\n\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis\n\n\n\n\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n\n\n\n\nWarning: Removed 2 rows containing missing values (`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\nSome text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#quarto",
+    "href": "presentation.html#quarto",
+    "title": "Project title",
+    "section": "",
+    "text": "The presentation is created using the Quarto CLI\n## sets the start of a new slide"
+  },
+  {
+    "objectID": "presentation.html#layouts",
+    "href": "presentation.html#layouts",
+    "title": "Project title",
+    "section": "",
+    "text": "You can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis"
+  },
+  {
+    "objectID": "presentation.html#code",
+    "href": "presentation.html#code",
+    "title": "Project title",
+    "section": "",
+    "text": "# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;"
+  },
+  {
+    "objectID": "presentation.html#plots",
+    "href": "presentation.html#plots",
+    "title": "Project title",
+    "section": "",
+    "text": "Warning: Removed 2 rows containing missing values (`geom_point()`)."
+  },
+  {
+    "objectID": "presentation.html#plot-and-text",
+    "href": "presentation.html#plot-and-text",
+    "title": "Project title",
+    "section": "",
+    "text": "Some text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#tables",
+    "href": "presentation.html#tables",
+    "title": "Project title",
+    "section": "Tables",
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale"
+  },
+  {
+    "objectID": "presentation.html#images",
+    "href": "presentation.html#images",
+    "title": "Project title",
+    "section": "Images",
+    "text": "Images\n\n\n\nImage credit: Danielle Navarro, Percolate."
+  },
+  {
+    "objectID": "presentation.html#math-expressions",
+    "href": "presentation.html#math-expressions",
+    "title": "Project title",
+    "section": "Math Expressions",
+    "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
+  },
+  {
+    "objectID": "presentation.html#feeling-adventurous",
+    "href": "presentation.html#feeling-adventurous",
+    "title": "Project title",
+    "section": "Feeling adventurous?",
+    "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
+  },
+  {
+    "objectID": "presentation.html#footnotes",
+    "href": "presentation.html#footnotes",
+    "title": "Project title",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAnd add footnotes↩︎"
+  }
+]
