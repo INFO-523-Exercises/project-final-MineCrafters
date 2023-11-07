@@ -4,12 +4,14 @@ format: html
 editor: visual
 ---
 
-This project was developed by **\[Team Name\]** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
+This project was developed by **MineCrafters** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
--   Team member 1: One sentence description of Team member 1 (e.g., year, major, etc.).
+-   Aslam Sheik Dawood: Graduate student, Data Science, University of Arizona
 
--   Team member 2: One sentence description of Team member 2 (e.g., year, major, etc.).
+-   Hari Dave: Graduate student, Data Science, University of Arizona
 
--   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).
+-   Partha Koundinya P: Graduate student, Data Science, University of Arizona
 
--   Team member 4: One sentence description of Team member 4 (e.g., year, major, etc.).
+-   Sarthak Miglani: Graduate student, Data Science, University of Arizona
+
+-   Vinu Kevin Diesel: Graduate student, Data Science, University of Arizona
