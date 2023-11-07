@@ -1,7 +1,7 @@
 ---
-title: "Project title"
-subtitle: "INFO 523 - Project Final"
-author: "Team name"
+title: "SoleMate"
+subtitle: "Your ultimate footwear matchmaker"
+author: "MineCrafters"
 format: html
 editor: visual
 ---
