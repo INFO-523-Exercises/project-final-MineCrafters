@@ -30,7 +30,7 @@ solemate <- read.csv("data/solemate.csv")
 
 ```
 
-The dataset comes from the [Kaggle Database](https://www.kaggle.com/datasets/kaushiksuresh147/adidas-vs-nike). The dataset consists of 3268 products from Nike and Adidas with various features of information including their `ratings`, `discount`, `sales price`, `listed price`, `product description`, and the `number of reviews`. With this sizeable and diverse sample of shoes from these two most popular brands, this dataset promises to serve as a foundational resource for building the **SoleMate** system. The table representing the features and their description is presented below.
+The dataset comes from the [Kaggle Database](https://www.kaggle.com/datasets/kaushiksuresh147/adidas-vs-nike). The dataset consists of 3268 products from Nike and Adidas with various features of information including their `ratings`, `discount`, `sales price`, `listed price`, `product description`, and the `number of reviews`. With this sizeable and diverse sample of shoes from these two most popular brands, this dataset promises to serve as a foundational resource for building the **SoleMate** system. The table representing the features in the dataset and their description is presented below.
 
 | Feature       | Description                                         |
 |---------------|-----------------------------------------------------|
