@@ -49,7 +49,7 @@ The dataset comes from the [Kaggle Database](https://www.kaggle.com/datasets/kau
 
 ## Question
 
-How do you find the perfect Solemate?
+What are the optimal shoe options based on the user's preferences?
 
 ## Analysis plan
 
