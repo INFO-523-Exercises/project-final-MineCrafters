@@ -6,15 +6,13 @@ code-fold: true
 editor: visual
 ---
 
-The high-level goal of this project is to develop a shoe-recommendation system. 
+The high-level goal of this project is to develop a shoe-recommendation system.
 
 In an era where fashion and comfort go hand in hand, the **SoleMate** shoe recommendation system aims to revolutionize the way people choose their footwear. Footwear selection is a highly subjective and personal decision, influenced by various factors like preferred brand, price and discount, lifestyle, and fashion preferences. To address this, our project aims to develop a state-of-the-art machine learning-based recommendation system to assist individuals in finding the perfect pair of shoes that suits their unique needs.
 
 To deliver a better seamless and highly personalized shopping experience for shoe enthusiasts, we came up with idea of **SoleMate**. By leveraging the power of machine learning algorithms, our system will take into account a wide array of factors to generate tailored shoe recommendations for users.
 
-
 ## Dataset
-
 
 ```{r, echo=TRUE, results='hide'}
 #| label: load-dataset
@@ -34,18 +32,18 @@ solemate <- read.csv("data/solemate.csv")
 
 The dataset comes from the [Kaggle Database](https://www.kaggle.com/datasets/kaushiksuresh147/adidas-vs-nike). The dataset consists of 3268 products from Nike and Adidas with various features of information including their `ratings`, `discount`, `sales price`, `listed price`, `product description`, and the `number of reviews`. With this sizeable and diverse sample of shoes from these two most popular brands, this dataset promises to serve as a foundational resource for building the **SoleMate** system. The table representing the features in the dataset and their description is presented below.
 
-| Feature       | Description                                         |
-|---------------|-----------------------------------------------------|
-| Product Name  | Name of the product                                 |
-| Product ID    | Unique product ID                                   |
-| Listing Price | Price of the product as listed                      |
-| Sales Price   | Price after applying discount rate                  |
-| Discount      | Discount percent provided on the product            |
-| Brand         | Brand of the product                                |
-| Description   | Description of the product                          |
-| Rating        | Rating provided for the product by users (out of 5) |
-| Reviews       | Number of reviews provided on the product           |
-| Last visited  | Last visit on the product by a customer             |
+| Feature       | Data Type | Description                                         |
+|---------------|-----------|-----------------------------------------------------|
+| Product Name  | Character | Name of the product                                 |
+| Product ID    | Character | Unique product ID                                   |
+| Listing Price | Integer   | Price of the product as listed                      |
+| Sales Price   | Integer   | Price after applying discount rate                  |
+| Discount      | Integer   | Discount percent provided on the product            |
+| Brand         | Character | Brand of the product                                |
+| Description   | Character | Description of the product                          |
+| Rating        | Float     | Rating provided for the product by users (out of 5) |
+| Reviews       | Integer   | Number of reviews provided on the product           |
+| Last visited  | DateTime  | Last visit on the product by a customer             |
 
 ## Question
 
@@ -94,7 +92,7 @@ By following the below analysis plan, the project can efficiently implement a ro
 ## Plan of Attack
 
 |             Week             |                              Weekly Tasks                              | Team members involved |
-|:---------------------:|:-------------------------:|:---------------------:|
+|:----------------------------:|:----------------------------------------------------------------------:|:---------------------:|
 |     Till November 8^th^      |      Explore and finalize the dataset and the problem statements       |       Everyone        |
 |              \-              |         Complete the proposal and assign some high-level tasks         |       Everyone        |
 |     Nov. 9^th^ - 15^th^      |                       Exploratory Data Analysis                        |      Hari, Syed       |
