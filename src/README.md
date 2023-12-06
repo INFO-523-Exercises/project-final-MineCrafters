@@ -10,7 +10,7 @@
 - **Exploratory Data Analysis (EDA):** Provides an initial analysis to understand data structure, types, and summary statistics.
 - **Data Cleaning:** Processes data for analysis, including rounding off income values and handling missing data.
 - **Data Visualization:** Includes various plots to visualize relationships within the data, such as price distributions, price vs. income, price vs. house age, and more.
-- **Modelling:** Trying out various ML Algorithms like Random Forest Regressor, XGBoost Regressor and Elastic Net Regression (For Regularization).
+- **Modelling:** Trying out various ML Algorithms like Random Forest Regressor, XGBoost Regressor and Elastic Net Regression.
 
 ## Prerequisites
 - Python 3.x
