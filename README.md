@@ -1,4 +1,4 @@
-# SoleMate - Your ultimate footwear matchmaker
+# Brick-Metrics - Building Precision in Predicting USA Home Prices
 
 This project was developed by **MineCrafters** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
@@ -13,4 +13,5 @@ This project was developed by **MineCrafters** For [INFO 523 - Data Mining and D
 -   **Vinu Kevin Diesel**: Graduate student in Data Science, University of Arizona
 
 #### Disclosure:
-Derived from the original data viz course by Mine Çetinkaya-Rundel @ Duke University
+
+Derived from the original data viz course by Mine Çetinkaya-Rundel \@ Duke University
