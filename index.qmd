@@ -1,6 +1,6 @@
 ---
-title: "SoleMate"
-subtitle: "Your ultimate footwear matchmaker"
+title: "Brick-Metrics"
+subtitle: "Building Precision in Predicting USA Home Prices"
 author: "MineCrafters"
 format: html
 editor: visual

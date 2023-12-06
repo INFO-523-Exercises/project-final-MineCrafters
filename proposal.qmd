@@ -1,20 +1,23 @@
 ---
-title: "SoleMate"
-subtitle: "Your ultimate footwear matchmaker"
+title: "Brick-Metrics"
+subtitle: "Building Precision in Predicting USA Home Prices"
 format: html
 code-fold: true
 editor: visual
 ---
-
 ## Project Objective
 
-The high-level goal of this project is developing a State-of-the-Art Shoe Recommendation System.
+The primary objective of this project is to develop a predictive model for housing prices in the US.  
 
-In an era where fashion and comfort go hand in hand, the **SoleMate** shoe recommendation system aims to revolutionize the way people choose their footwear. Footwear selection is a highly subjective and personal decision, influenced by various factors like preferred brand, price and discount, lifestyle, and fashion preferences. To address this, our project aims to develop a state-of-the-art machine learning-based recommendation system to assist individuals in finding the perfect pair of shoes that suits their unique needs.
+This project centers around utilizing the USA_Housing dataset to build a predictive model for housing prices. The project aims to create a robust and accurate model that can estimate housing prices for given sets of input variables by employing regression algorithms. By leveraging machine learning techniques, the goal is to analyze the relationships between various features such as Average Area Income, Average Area House Age, Average Area of Rooms, Average Area of bedrooms, and Area Population, and predict the housing prices based on these factors. 
 
-To deliver a better seamless and highly personalized shopping experience for shoe enthusiasts, we came up with idea of **SoleMate**. By leveraging the power of machine learning algorithms, our system will take into account a wide array of factors to generate tailored shoe recommendations for users.
+Through exploratory data analysis, feature engineering, and machine learning modeling, the project will uncover patterns, correlations, and dependencies within the dataset. Subsequently, a regression model will be trained to understand and quantify the influence of each feature on the housing prices. The model's performance will be evaluated using metrics such as mean squared error or R-squared, ensuring its reliability and accuracy.
+
+
+
 
 ## Dataset
+
 
 ```{r, echo=TRUE, results='hide'}
 #| label: load-dataset
@@ -26,38 +29,37 @@ library(tidyverse)
 
 #> Loading the Dataset - solemate
 
-solemate <- read.csv("data/solemate.csv")
+brickMetrics <- read.csv("data/USA_Housing.csv")
 
 
 
 ```
 
-The dataset comes from the [Kaggle Database](https://www.kaggle.com/datasets/kaushiksuresh147/adidas-vs-nike). The dataset consists of 3268 products from Nike and Adidas with various features of information including their `ratings`, `discount`, `sales price`, `listed price`, `product description`, and the `number of reviews`. With this sizeable and diverse sample of shoes from these two most popular brands, this dataset promises to serve as a foundational resource for building the **SoleMate** system. The table representing the features in the dataset and their description is presented below.
+The dataset comes from the [Kaggle Database](https://www.kaggle.com/datasets/aariyan101/usa-housingcsv/data). The dataset consists of 5000 observations related to houses accross the United States with various features of information including their `Average Area Income`, `Average Area House Age`, `Average Area Number of Rooms`, `Average Area Number of Bedrooms`, `Area Population`,`Address`, and `Price`
+With this sizeable and diverse sample of housing data, this dataset promises to serve as a foundational resource for building the **Brick-Metrics** system. The table representing the features in the dataset and their description is presented below.
+
 
 | Feature       | Data Type | Description                                         |
 |---------------|---------------|------------------------------------------|
-| Product Name  | Character | Name of the product                                 |
-| Product ID    | Character | Unique product ID                                   |
-| Listing Price | Integer   | Price of the product as listed                      |
-| Sales Price   | Integer   | Price after applying discount rate                  |
-| Discount      | Integer   | Discount percent provided on the product            |
-| Brand         | Character | Brand of the product                                |
-| Description   | Character | Description of the product                          |
-| Rating        | Float     | Rating provided for the product by users (out of 5) |
-| Reviews       | Integer   | Number of reviews provided on the product           |
-| Last visited  | DateTime  | Last visit on the product by a customer             |
+| Avg. Area Income  | Integer | Average Area Income of the population in the specific location     |
+| Avg. Area House Age    | Integer | Average Area House Age                                  |
+| Avg. Area Number of Rooms | Integer   | Average Area of total Number of Rooms             |
+| Average Area Number of Rooms  | Integer   | Average Area of total Number of Bedrooms        |
+| Area Population      | Integer   | Population of the place          |
+| Address        | Character | Address of the house                               |
+| Price  | Integer | Price of the house                         |
 
 ## Question
 
-What are the optimal shoe options based on the user's preferences?
+How accurately can the housing prices in the US be predicted?
 
 ## Analysis plan
 
-By following the below analysis plan, the project can efficiently implement a robust recommendation system that enhances the footwear shopping experience for users.
+By following the below analysis plan, the project can efficiently implement a robust recommendation system that enhances the development of the prediction system.
 
 -   Exploratory Data Analysis (EDA):
 
-    -   Acquire and load the dataset for both shoe brands.
+    -   Acquire and load the dataset.
     -   Explore the dataset to understand its structure and the variables it contains.
     -   Visualize data distributions, identify outliers, and check for missing values.
     -   Analyze customer reviews and ratings to gain insights into user preferences.
@@ -70,16 +72,16 @@ By following the below analysis plan, the project can efficiently implement a ro
 
 -   Data Visualization
 
-    -   Visualizing the favourite shoe brand based on the customer rating and the number of reviews.
+    -   Visualizing the necessary correlations.
 
 -   Feature Engineering:
 
-    -   Create additional features if necessary, such as sentiment analysis scores for customer reviews.
+    -   Create additional features if necessary.
 
 -   Training and Testing:
 
-    -   Select machine learning algorithms suitable for recommendation tasks, such as collaborative filtering, content-based filtering, and hybrid methods.
-    -   Train multiple recommendation models on the training data.
+    -   Select machine learning algorithms suitable for prediction like regression models.
+    -   Train multiple models on the training data.
     -   Evaluate model performance using testing data.
 
 -   Model Evaluation:

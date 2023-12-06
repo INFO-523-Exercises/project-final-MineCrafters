@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.515">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MineCrafters - SoleMate</title>
+<title>MineCrafters - Brick-Metrics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -101,9 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">MineCrafters</span>
     </a>
@@ -115,32 +121,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Project</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./proposal.html" rel="" target="" aria-current="page">
- <span class="menu-text">Proposal</span></a>
+    <a class="nav-link active" href="./proposal.html" aria-current="page"> 
+<span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentation.html" rel="" target="">
- <span class="menu-text">Presentation</span></a>
+    <a class="nav-link" href="./presentation.html"> 
+<span class="menu-text">Presentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/INFO526-DataViz/project-01" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/INFO-523-Exercises/project-final-MineCrafters"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -167,8 +173,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">SoleMate</h1>
-<p class="subtitle lead">Your ultimate footwear matchmaker</p>
+<h1 class="title">Brick-Metrics</h1>
+<p class="subtitle lead">Building Precision in Predicting USA Home Prices</p>
 </div>
 
 
@@ -181,18 +187,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="project-objective" class="level2">
 <h2 class="anchored" data-anchor-id="project-objective">Project Objective</h2>
-<p>The high-level goal of this project is developing a State-of-the-Art Shoe Recommendation System.</p>
-<p>In an era where fashion and comfort go hand in hand, the <strong>SoleMate</strong> shoe recommendation system aims to revolutionize the way people choose their footwear. Footwear selection is a highly subjective and personal decision, influenced by various factors like preferred brand, price and discount, lifestyle, and fashion preferences. To address this, our project aims to develop a state-of-the-art machine learning-based recommendation system to assist individuals in finding the perfect pair of shoes that suits their unique needs.</p>
-<p>To deliver a better seamless and highly personalized shopping experience for shoe enthusiasts, we came up with idea of <strong>SoleMate</strong>. By leveraging the power of machine learning algorithms, our system will take into account a wide array of factors to generate tailored shoe recommendations for users.</p>
+<p>The primary objective of this project is to develop a predictive model for housing prices in the US.</p>
+<p>This project centers around utilizing the USA_Housing dataset to build a predictive model for housing prices. The project aims to create a robust and accurate model that can estimate housing prices for given sets of input variables by employing regression algorithms. By leveraging machine learning techniques, the goal is to analyze the relationships between various features such as Average Area Income, Average Area House Age, Average Area of Rooms, Average Area of bedrooms, and Area Population, and predict the housing prices based on these factors.</p>
+<p>Through exploratory data analysis, feature engineering, and machine learning modeling, the project will uncover patterns, correlations, and dependencies within the dataset. Subsequently, a regression model will be trained to understand and quantify the influence of each feature on the housing prices. The model’s performance will be evaluated using metrics such as mean squared error or R-squared, ensuring its reliability and accuracy.</p>
 </section>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Installing necessary libraries </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -200,10 +208,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading the Dataset - solemate</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>solemate <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/solemate.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>brickMetrics <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/USA_Housing.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>The dataset comes from the <a href="https://www.kaggle.com/datasets/kaushiksuresh147/adidas-vs-nike">Kaggle Database</a>. The dataset consists of 3268 products from Nike and Adidas with various features of information including their <code>ratings</code>, <code>discount</code>, <code>sales price</code>, <code>listed price</code>, <code>product description</code>, and the <code>number of reviews</code>. With this sizeable and diverse sample of shoes from these two most popular brands, this dataset promises to serve as a foundational resource for building the <strong>SoleMate</strong> system. The table representing the features in the dataset and their description is presented below.</p>
+<p>The dataset comes from the <a href="https://www.kaggle.com/datasets/aariyan101/usa-housingcsv/data">Kaggle Database</a>. The dataset consists of 5000 observations related to houses accross the United States with various features of information including their <code>Average Area Income</code>, <code>Average Area House Age</code>, <code>Average Area Number of Rooms</code>, <code>Average Area Number of Bedrooms</code>, <code>Area Population</code>,<code>Address</code>, and <code>Price</code> With this sizeable and diverse sample of housing data, this dataset promises to serve as a foundational resource for building the <strong>Brick-Metrics</strong> system. The table representing the features in the dataset and their description is presented below.</p>
 <table class="table">
 <colgroup>
 <col style="width: 20%">
@@ -219,69 +227,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>Product Name</td>
-<td>Character</td>
-<td>Name of the product</td>
+<td>Avg. Area Income</td>
+<td>Integer</td>
+<td>Average Area Income of the population in the specific location</td>
 </tr>
 <tr class="even">
-<td>Product ID</td>
-<td>Character</td>
-<td>Unique product ID</td>
+<td>Avg. Area House Age</td>
+<td>Integer</td>
+<td>Average Area House Age</td>
 </tr>
 <tr class="odd">
-<td>Listing Price</td>
+<td>Avg. Area Number of Rooms</td>
 <td>Integer</td>
-<td>Price of the product as listed</td>
+<td>Average Area of total Number of Rooms</td>
 </tr>
 <tr class="even">
-<td>Sales Price</td>
+<td>Average Area Number of Rooms</td>
 <td>Integer</td>
-<td>Price after applying discount rate</td>
+<td>Average Area of total Number of Bedrooms</td>
 </tr>
 <tr class="odd">
-<td>Discount</td>
+<td>Area Population</td>
 <td>Integer</td>
-<td>Discount percent provided on the product</td>
+<td>Population of the place</td>
 </tr>
 <tr class="even">
-<td>Brand</td>
+<td>Address</td>
 <td>Character</td>
-<td>Brand of the product</td>
+<td>Address of the house</td>
 </tr>
 <tr class="odd">
-<td>Description</td>
-<td>Character</td>
-<td>Description of the product</td>
-</tr>
-<tr class="even">
-<td>Rating</td>
-<td>Float</td>
-<td>Rating provided for the product by users (out of 5)</td>
-</tr>
-<tr class="odd">
-<td>Reviews</td>
+<td>Price</td>
 <td>Integer</td>
-<td>Number of reviews provided on the product</td>
-</tr>
-<tr class="even">
-<td>Last visited</td>
-<td>DateTime</td>
-<td>Last visit on the product by a customer</td>
+<td>Price of the house</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="question" class="level2">
 <h2 class="anchored" data-anchor-id="question">Question</h2>
-<p>What are the optimal shoe options based on the user’s preferences?</p>
+<p>How accurately can the housing prices in the US be predicted?</p>
 </section>
 <section id="analysis-plan" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-plan">Analysis plan</h2>
-<p>By following the below analysis plan, the project can efficiently implement a robust recommendation system that enhances the footwear shopping experience for users.</p>
+<p>By following the below analysis plan, the project can efficiently implement a robust recommendation system that enhances the development of the prediction system.</p>
 <ul>
 <li><p>Exploratory Data Analysis (EDA):</p>
 <ul>
-<li>Acquire and load the dataset for both shoe brands.</li>
+<li>Acquire and load the dataset.</li>
 <li>Explore the dataset to understand its structure and the variables it contains.</li>
 <li>Visualize data distributions, identify outliers, and check for missing values.</li>
 <li>Analyze customer reviews and ratings to gain insights into user preferences.</li>
@@ -294,16 +287,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p>Data Visualization</p>
 <ul>
-<li>Visualizing the favourite shoe brand based on the customer rating and the number of reviews.</li>
+<li>Visualizing the necessary correlations.</li>
 </ul></li>
 <li><p>Feature Engineering:</p>
 <ul>
-<li>Create additional features if necessary, such as sentiment analysis scores for customer reviews.</li>
+<li>Create additional features if necessary.</li>
 </ul></li>
 <li><p>Training and Testing:</p>
 <ul>
-<li>Select machine learning algorithms suitable for recommendation tasks, such as collaborative filtering, content-based filtering, and hybrid methods.</li>
-<li>Train multiple recommendation models on the training data.</li>
+<li>Select machine learning algorithms suitable for prediction like regression models.</li>
+<li>Train multiple models on the training data.</li>
 <li>Evaluate model performance using testing data.</li>
 </ul></li>
 <li><p>Model Evaluation:</p>
@@ -497,10 +490,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -510,8 +502,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -524,6 +525,135 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -567,6 +697,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -592,6 +723,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -652,6 +809,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
