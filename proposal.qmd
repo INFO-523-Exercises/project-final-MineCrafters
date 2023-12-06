@@ -128,3 +128,5 @@ The following are the folders involved in the Project repository.
 -   **\_site/:** Folder used to store the generated static website files after the site generator processes the quarto document.
 
 -   **.github/:** Folder for storing github templates and workflow.
+
+-   **src/:** Folder used to store the source code file.
