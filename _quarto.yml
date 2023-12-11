@@ -9,7 +9,7 @@ website:
         href: https://github.com/INFO-523-Exercises/project-final-MineCrafters
     left:
       - text: Project
-        href: index.qmd
+        href: MineCrafters.qmd
       - text: Proposal
         href: proposal.qmd
       - text: Presentation

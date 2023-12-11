@@ -10,15 +10,21 @@ editor: visual
 
 Add project abstract here.
 
-```{r, eval=FALSE}
+```{r}
 library(reticulate)
 
+py_install("jupyter")
+py_install("ipykernel")
+
+install.packages('IRkernel')
+IRkernel::installspec(user = FALSE)
 
 ```
-
-
 ```{r}
-#| echo: true
-#| eval: true # skip evaluation
-#| file: MineCrafters.ipynb
+
+
+
 ```
+
+
+
