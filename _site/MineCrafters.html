@@ -164,6 +164,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">Question</a></li>
   <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
   </ul>
 </nav>
@@ -202,7 +204,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This project is aimed at the development and evaluation of regression models for predicting housing prices using a dataset titled ‘USA_Housing.csv.’ The overarching goal is to construct robust and accurate models through the application of various machine learning algorithms. The project follows a systematic workflow, encompassing data exploration, feature engineering, model training, hyperparameter tuning, and comprehensive performance evaluation.</p>
 <p>The initial phase involves the importation of essential Python libraries, such as NumPy, Pandas, Matplotlib, Seaborn, and scikit-learn, conducting an in-depth exploratory data analysis (EDA), unveiling insights into data distributions, correlations, and potential preprocessing requirements. Visualizations, including histograms, bar plots, and heatmaps, aid in understanding the dataset’s characteristics.</p>
 <p>Further, the project employs a diverse set of regression models, including Decision Tree Regressor, Random Forest Regressor, XGBoost Regressor, Support Vector Regression (SVR), and Elastic Net Regression. Thus, the project provides a practical implementation of regression modeling for housing price prediction</p>
-<div id="ab11a03c" class="cell" data-execution_count="1">
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In the dynamic landscape of the US real estate market, predicting house prices is paramount for informed decision-making. This project employs cutting-edge machine learning techniques to unravel the intricate patterns and factors influencing housing values. By leveraging vast datasets, our aim is to develop a robust predictive model.</p>
+</section>
+<section id="question" class="level2">
+<h2 class="anchored" data-anchor-id="question">Question</h2>
+<p>How accurately can the housing prices in the US be predicted?</p>
+<div id="4ac924a9" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -224,14 +234,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="d999e2d3" class="cell" data-execution_count="2">
+<div id="ad0f5ac5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading csv file</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'USA_Housing.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -369,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="exploratory-data-analysis" class="level1">
 <h1>Exploratory Data Analysis</h1>
-<div id="a91e7650" class="cell" data-execution_count="3">
+<div id="e22b9ea1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data.info()<span class="co">#print a concise summary of a DataFrame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -391,13 +401,13 @@ dtypes: float64(6), object(1)
 memory usage: 273.6+ KB</code></pre>
 </div>
 </div>
-<div id="d6ac86e4" class="cell" data-execution_count="4">
+<div id="cb5c047e" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking null values</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>Avg. Area Income                0
 Avg. Area House Age             0
 Avg. Area Number of Rooms       0
@@ -408,12 +418,12 @@ Address                         0
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="c5eb5881" class="cell" data-execution_count="5">
+<div id="c09ff6c6" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data.describe()<span class="co"># Generate descriptive statistics summarizing central tendency, dispersion, and shape of dataset's distribution.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -508,7 +518,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="398d6ee6" class="cell" data-execution_count="6">
+<div id="0761d3c7" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Claening</span></span>
@@ -521,7 +531,7 @@ dtype: int64</code></pre>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Price'</span>] <span class="op">=</span> data[<span class="st">'Price'</span>].<span class="bu">apply</span>(<span class="bu">int</span>)<span class="co"># Converting 'Price' to integers and adding it to 'df' as 'Price'.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="9fc04c8f" class="cell" data-execution_count="7">
+<div id="b40dcc83" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data[<span class="st">'Avg. Area Number of Bedrooms'</span>], kde<span class="op">=</span><span class="va">False</span>, bins<span class="op">=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -538,7 +548,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="3dd9fc01" class="cell" data-execution_count="8">
+<div id="c49d1c45" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price plot</span></span>
@@ -546,7 +556,7 @@ dtype: int64</code></pre>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sns.distplot(data.Price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\Jithin\AppData\Local\Temp\ipykernel_19144\3496450648.py:3: UserWarning: 
+<pre><code>C:\Users\Jithin\AppData\Local\Temp\ipykernel_27196\3496450648.py:3: UserWarning: 
 
 `distplot` is a deprecated function and will be removed in seaborn v0.14.0.
 
@@ -566,7 +576,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 </div>
-<div id="ad52a2e2" class="cell" data-execution_count="9">
+<div id="21488db5" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price wrt Income</span></span>

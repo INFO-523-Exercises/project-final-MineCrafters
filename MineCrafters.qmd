@@ -18,6 +18,14 @@ The initial phase involves the importation of essential Python libraries, such a
 Further, the project employs a diverse set of regression models, including Decision Tree Regressor, Random Forest Regressor, XGBoost Regressor, Support Vector Regression (SVR), and Elastic Net Regression. Thus, the project provides a practical implementation of regression modeling for housing price prediction
 
 
+## Introduction
+
+In the dynamic landscape of the US real estate market, predicting house prices is paramount for informed decision-making. This project employs cutting-edge machine learning techniques to unravel the intricate patterns and factors influencing housing values. By leveraging vast datasets, our aim is to develop a robust predictive model.
+
+
+## Question
+
+How accurately can the housing prices in the US be predicted?
 
 
 ```{python}
