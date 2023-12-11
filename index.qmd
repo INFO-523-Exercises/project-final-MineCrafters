@@ -9,3 +9,16 @@ editor: visual
 ## Abstract
 
 Add project abstract here.
+
+```{r, eval=FALSE}
+library(reticulate)
+
+
+```
+
+
+```{r}
+#| echo: true
+#| eval: true # skip evaluation
+#| file: MineCrafters.ipynb
+```

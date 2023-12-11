@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.515">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MineCrafters - Import Libraries and Load dataset</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">MineCrafters</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../proposal.html"> 
+<span class="menu-text">Proposal</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../presentation.html"> 
+<span class="menu-text">Presentation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/INFO-523-Exercises/project-final-MineCrafters"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link active" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+  <li><a href="#setting-target-and-variable-and-train-test-split" id="toc-setting-target-and-variable-and-train-test-split" class="nav-link" data-scroll-target="#setting-target-and-variable-and-train-test-split">Setting Target and Variable and Train Test Split</a></li>
+  <li><a href="#random-forest-regressor" id="toc-random-forest-regressor" class="nav-link" data-scroll-target="#random-forest-regressor">Random FOrest Regressor</a></li>
+  <li><a href="#random-forest-model-evaluation" id="toc-random-forest-model-evaluation" class="nav-link" data-scroll-target="#random-forest-model-evaluation">Random Forest Model Evaluation</a></li>
+  <li><a href="#xgboost-regressor" id="toc-xgboost-regressor" class="nav-link" data-scroll-target="#xgboost-regressor">XGBoost Regressor</a></li>
+  <li><a href="#xgboost-regressor-model-evaluation" id="toc-xgboost-regressor-model-evaluation" class="nav-link" data-scroll-target="#xgboost-regressor-model-evaluation">XGBoost Regressor Model Evaluation</a></li>
+  <li><a href="#elastic-net-model" id="toc-elastic-net-model" class="nav-link" data-scroll-target="#elastic-net-model">Elastic Net Model</a></li>
+  <li><a href="#elastic-net-model-evaluation" id="toc-elastic-net-model-evaluation" class="nav-link" data-scroll-target="#elastic-net-model-evaluation">Elastic Net Model Evaluation</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Import Libraries and Load dataset</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="eea09845" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OrdinalEncoder</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBRegressor</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, mean_absolute_error</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> ElasticNet</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="0bf1f510" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading csv file</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'USA_Housing.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Avg. Area Income</th>
+<th data-quarto-table-cell-role="th">Avg. Area House Age</th>
+<th data-quarto-table-cell-role="th">Avg. Area Number of Rooms</th>
+<th data-quarto-table-cell-role="th">Avg. Area Number of Bedrooms</th>
+<th data-quarto-table-cell-role="th">Area Population</th>
+<th data-quarto-table-cell-role="th">Price</th>
+<th data-quarto-table-cell-role="th">Address</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>79545.458574</td>
+<td>5.682861</td>
+<td>7.009188</td>
+<td>4.09</td>
+<td>23086.800503</td>
+<td>1.059034e+06</td>
+<td>208 Michael Ferry Apt. 674\nLaurabury, NE 3701...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>79248.642455</td>
+<td>6.002900</td>
+<td>6.730821</td>
+<td>3.09</td>
+<td>40173.072174</td>
+<td>1.505891e+06</td>
+<td>188 Johnson Views Suite 079\nLake Kathleen, CA...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>61287.067179</td>
+<td>5.865890</td>
+<td>8.512727</td>
+<td>5.13</td>
+<td>36882.159400</td>
+<td>1.058988e+06</td>
+<td>9127 Elizabeth Stravenue\nDanieltown, WI 06482...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>63345.240046</td>
+<td>7.188236</td>
+<td>5.586729</td>
+<td>3.26</td>
+<td>34310.242831</td>
+<td>1.260617e+06</td>
+<td>USS Barnett\nFPO AP 44820</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>59982.197226</td>
+<td>5.040555</td>
+<td>7.839388</td>
+<td>4.23</td>
+<td>26354.109472</td>
+<td>6.309435e+05</td>
+<td>USNS Raymond\nFPO AE 09386</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4995</td>
+<td>60567.944140</td>
+<td>7.830362</td>
+<td>6.137356</td>
+<td>3.46</td>
+<td>22837.361035</td>
+<td>1.060194e+06</td>
+<td>USNS Williams\nFPO AP 30153-7653</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4996</td>
+<td>78491.275435</td>
+<td>6.999135</td>
+<td>6.576763</td>
+<td>4.02</td>
+<td>25616.115489</td>
+<td>1.482618e+06</td>
+<td>PSC 9258, Box 8489\nAPO AA 42991-3352</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4997</td>
+<td>63390.686886</td>
+<td>7.250591</td>
+<td>4.805081</td>
+<td>2.13</td>
+<td>33266.145490</td>
+<td>1.030730e+06</td>
+<td>4215 Tracy Garden Suite 076\nJoshualand, VA 01...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4998</td>
+<td>68001.331235</td>
+<td>5.534388</td>
+<td>7.130144</td>
+<td>5.44</td>
+<td>42625.620156</td>
+<td>1.198657e+06</td>
+<td>USS Wallace\nFPO AE 73316</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4999</td>
+<td>65510.581804</td>
+<td>5.992305</td>
+<td>6.792336</td>
+<td>4.07</td>
+<td>46501.283803</td>
+<td>1.298950e+06</td>
+<td>37778 George Ridges Apt. 509\nEast Holly, NV 2...</td>
+</tr>
+</tbody>
+</table>
+
+<p>5000 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<section id="exploratory-data-analysis" class="level1">
+<h1>Exploratory Data Analysis</h1>
+<div id="ea2aa2f3" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data.info()<span class="co">#print a concise summary of a DataFrame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 5000 entries, 0 to 4999
+Data columns (total 7 columns):
+ #   Column                        Non-Null Count  Dtype  
+---  ------                        --------------  -----  
+ 0   Avg. Area Income              5000 non-null   float64
+ 1   Avg. Area House Age           5000 non-null   float64
+ 2   Avg. Area Number of Rooms     5000 non-null   float64
+ 3   Avg. Area Number of Bedrooms  5000 non-null   float64
+ 4   Area Population               5000 non-null   float64
+ 5   Price                         5000 non-null   float64
+ 6   Address                       5000 non-null   object 
+dtypes: float64(6), object(1)
+memory usage: 273.6+ KB</code></pre>
+</div>
+</div>
+<div id="01c84eaf" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking null values</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>Avg. Area Income                0
+Avg. Area House Age             0
+Avg. Area Number of Rooms       0
+Avg. Area Number of Bedrooms    0
+Area Population                 0
+Price                           0
+Address                         0
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="3ef10dca" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data.describe()<span class="co"># Generate descriptive statistics summarizing central tendency, dispersion, and shape of dataset's distribution.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Avg. Area Income</th>
+<th data-quarto-table-cell-role="th">Avg. Area House Age</th>
+<th data-quarto-table-cell-role="th">Avg. Area Number of Rooms</th>
+<th data-quarto-table-cell-role="th">Avg. Area Number of Bedrooms</th>
+<th data-quarto-table-cell-role="th">Area Population</th>
+<th data-quarto-table-cell-role="th">Price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>5000.000000</td>
+<td>5000.000000</td>
+<td>5000.000000</td>
+<td>5000.000000</td>
+<td>5000.000000</td>
+<td>5.000000e+03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>68583.108984</td>
+<td>5.977222</td>
+<td>6.987792</td>
+<td>3.981330</td>
+<td>36163.516039</td>
+<td>1.232073e+06</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>10657.991214</td>
+<td>0.991456</td>
+<td>1.005833</td>
+<td>1.234137</td>
+<td>9925.650114</td>
+<td>3.531176e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>17796.631190</td>
+<td>2.644304</td>
+<td>3.236194</td>
+<td>2.000000</td>
+<td>172.610686</td>
+<td>1.593866e+04</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>61480.562388</td>
+<td>5.322283</td>
+<td>6.299250</td>
+<td>3.140000</td>
+<td>29403.928702</td>
+<td>9.975771e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>68804.286404</td>
+<td>5.970429</td>
+<td>7.002902</td>
+<td>4.050000</td>
+<td>36199.406689</td>
+<td>1.232669e+06</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>75783.338666</td>
+<td>6.650808</td>
+<td>7.665871</td>
+<td>4.490000</td>
+<td>42861.290769</td>
+<td>1.471210e+06</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>107701.748378</td>
+<td>9.519088</td>
+<td>10.759588</td>
+<td>6.500000</td>
+<td>69621.713378</td>
+<td>2.469066e+06</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="32be5859" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Claening</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Income'</span>] <span class="op">=</span> data[<span class="st">'Avg. Area Income'</span>].<span class="bu">round</span>(<span class="dv">2</span>)<span class="co"># Round 'Avg. Area Income' to 2 decimal places and store in 'Income'.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'House Age'</span>] <span class="op">=</span> data[<span class="st">'Avg. Area House Age'</span>].<span class="bu">apply</span>(<span class="bu">int</span>)<span class="co"># Converting 'Avg. Area House Age' to integers and adding it to 'df' as 'House Age'.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'No. of Rooms'</span>] <span class="op">=</span> data[<span class="st">'Avg. Area Number of Rooms'</span>].<span class="bu">apply</span>(<span class="bu">int</span>)<span class="co"># Converting 'Avg. Area Number of Rooms' to integers and adding it to 'df' as 'No. of Rooms'.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'No. of Bedrooms'</span>] <span class="op">=</span> data[<span class="st">'Avg. Area Number of Bedrooms'</span>].<span class="bu">apply</span>(<span class="bu">int</span>)<span class="co"># Converting 'Avg. Area Number of Bedrooms' to integers and adding it to 'df' as 'No. of Bedrooms'.</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Population'</span>] <span class="op">=</span> data[<span class="st">'Area Population'</span>].<span class="bu">apply</span>(<span class="bu">int</span>)<span class="co"># Converting 'Area Population' to integers and adding it to 'df' as 'Population'.</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Price'</span>] <span class="op">=</span> data[<span class="st">'Price'</span>].<span class="bu">apply</span>(<span class="bu">int</span>)<span class="co"># Converting 'Price' to integers and adding it to 'df' as 'Price'.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="aed080ab" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price plot</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>), dpi <span class="op">=</span> <span class="dv">200</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sns.distplot(data.Price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\site-packages\seaborn\distributions.py:2619: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MineCrafters_main_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="bfce6c49" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price wrt Income</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>), dpi <span class="op">=</span> <span class="dv">200</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x <span class="op">=</span> <span class="st">'Income'</span>, y <span class="op">=</span> <span class="st">'Price'</span>, data <span class="op">=</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MineCrafters_main_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="dc1e16fa" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price wrt House Age</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>), dpi <span class="op">=</span> <span class="dv">200</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'House Age'</span>, y <span class="op">=</span> <span class="st">'Price'</span>, data <span class="op">=</span> df, ci <span class="op">=</span> <span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MineCrafters_main_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="30d1e811" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price wrt No. of Rooms</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>), dpi <span class="op">=</span> <span class="dv">200</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x <span class="op">=</span> <span class="st">'No. of Rooms'</span>, y <span class="op">=</span> <span class="st">'Price'</span>, data <span class="op">=</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MineCrafters_main_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="502e7d9e" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price wrt No. of Bedrooms</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>), dpi <span class="op">=</span> <span class="dv">200</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>sns.barplot(x <span class="op">=</span> <span class="st">'No. of Bedrooms'</span>, y <span class="op">=</span> <span class="st">'Price'</span>, data <span class="op">=</span> df, ci <span class="op">=</span> <span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MineCrafters_main_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="c13c1469" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price wrt Population</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>), dpi <span class="op">=</span> <span class="dv">200</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x <span class="op">=</span> <span class="st">'Population'</span>, y <span class="op">=</span> <span class="st">'Price'</span>, data <span class="op">=</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MineCrafters_main_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="40a661ce" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Heatmap showing correlation</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">8</span>), dpi <span class="op">=</span> <span class="dv">200</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sns.heatmap(data.corr(), annot <span class="op">=</span> <span class="va">True</span>, square <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MineCrafters_main_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-target-and-variable-and-train-test-split" class="level1">
+<h1>Setting Target and Variable and Train Test Split</h1>
+<div id="c54965e7" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting features and target variable</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data.drop([<span class="st">'Price'</span>, <span class="st">'Address'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'Price'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6ab0c0b0" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting the dataset into training and testing sets</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="random-forest-regressor" class="level1">
+<h1>Random FOrest Regressor</h1>
+<div id="39b3a765" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the parameter grid for hyperparameter tuning</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>],</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>],</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_split'</span>: [<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>],</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_leaf'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>]</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the Random Forest model</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestRegressor(random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup GridSearchCV</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>grid_search <span class="op">=</span> GridSearchCV(estimator<span class="op">=</span>rf, param_grid<span class="op">=</span>param_grid, cv<span class="op">=</span><span class="dv">5</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model to the scaled training data</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X_train, y_train)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the best estimator</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>best_rf <span class="op">=</span> grid_search.best_estimator_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="random-forest-model-evaluation" class="level1">
+<h1>Random Forest Model Evaluation</h1>
+<div id="49414c35" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions using the best model on the scaled test data</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> best_rf.predict(X_test)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print evaluation metrics</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, predictions)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y_test, predictions)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'R-squared: </span><span class="sc">{</span>r2<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Best Parameters:'</span>, grid_search.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Squared Error: 14308544382.476547
+R-squared: 0.8837010564891862
+Best Parameters: {'max_depth': 15, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 300}</code></pre>
+</div>
+</div>
+<div id="dd95f574" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>y_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>1501    1.339096e+06
+2586    1.251794e+06
+2653    1.340095e+06
+1055    1.431508e+06
+705     1.042374e+06
+            ...     
+4711    1.107031e+06
+2313    1.405505e+06
+3214    1.924156e+06
+2732    1.571254e+06
+1926    8.831475e+05
+Name: Price, Length: 1000, dtype: float64</code></pre>
+</div>
+</div>
+<div id="26e83aef" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>array([1307087.4879016 , 1244017.24023052, 1275777.07066763,
+       1214577.43025003, 1192457.00400717, 1539732.09473113,
+       1054950.89065146,  844769.54643916,  872790.21628404,
+       1398049.16235094,  661831.05833939, 1301529.31323965,
+       1016518.46975801, 1670219.73633286, 1298000.32853234,
+       1071816.48763003, 1372181.62763932, 1110194.55030423,
+        785093.52551906,  922088.97580721, 1104112.97959792,
+       1045094.09149729, 1510914.43292827, 1324413.85967803,
+       1569955.52697379, 1139994.3653257 , 1075623.0061941 ,
+        990756.03185819,  992439.03122436, 1696750.63264082,
+       1318006.76285044, 1626187.933248  , 1426841.27819474,
+       1238804.35095047, 1504419.18829708, 1699266.34457266,
+       1516403.58037732,  823754.72489952, 1718965.96252973,
+       1132175.57113273, 1497435.86874145,  934566.08165603,
+       1404337.49856037,  833930.84531217, 1185517.91615953,
+       1137422.32691787, 1322326.03358801, 1328598.39291966,
+       1528798.31010231, 1251061.97480092, 1478382.66847569,
+       1271181.61519816, 1181671.00795775,  916755.99759565,
+       1667101.8086411 , 1823141.88304839, 1088766.55036998,
+       1257198.52749067, 1328706.83995574, 1369157.36444634,
+        973773.60532907,  703281.64934846, 1515168.12040324,
+       1058388.63493951, 1100412.65920713, 1571329.26156108,
+       1526625.52116458, 1039311.95992991, 1803256.8864758 ,
+       1389081.11893812,  968759.52611896, 1602473.98355629,
+       1251565.44144685,  947575.7067101 ,  766625.16003246,
+       1548865.24072949, 1120554.73471455,  965421.29771347,
+       1694943.07073609,  440246.04888594, 1599152.52365688,
+       1175039.16348192,  599186.87193643,  443720.89859505,
+       1335364.9500612 ,  736810.12204184,  625366.48968576,
+       1025958.0144829 , 1520345.541842  , 1343907.61039133,
+       1264936.70882119, 1371208.11417684,  722215.8726605 ,
+       1079371.3900645 , 1294007.91136026,  743784.67144427,
+       1189309.75095576, 1026592.13397411, 1441411.85198903,
+       1496561.51218369,  551672.89931317, 1386277.60682014,
+       1288357.23397635, 1748218.72796802, 2129786.55033017,
+        935205.34305878, 1426401.76829747,  905306.60850858,
+       1838658.54335181, 1628560.73228968, 1555319.07508468,
+       1283947.54924084, 1753750.76512505, 1244582.34553525,
+        916787.01526364, 1583277.35767455,  755251.24369461,
+       1309057.54037239, 1221265.71523061, 1531966.88768046,
+       1767331.86970217, 1549524.22565959, 1580398.53562736,
+       1510756.99361088, 1668286.48973643, 1153430.71356206,
+        694592.76450065, 1007658.30492915, 1251134.09307986,
+       1612176.5388557 , 1331905.85147741, 1089863.15527629,
+       1581259.1048612 , 1353486.76998345, 1395505.45808154,
+       1431597.12772088, 1625164.89589177, 1241082.70759863,
+        832032.92920501, 1447457.26970895, 1696617.40100163,
+       1112195.41683316, 1715175.34825836, 1195063.90682076,
+       1852318.83574631,  936635.18760823, 1028696.56392351,
+       1119482.8937946 , 1376907.082805  , 1473338.71938086,
+       1007033.6437037 ,  945710.19123809, 1298372.30292334,
+       1464551.30629951, 1366805.32138598,  695397.53164451,
+       1666714.22921793, 1092320.40494978, 1927481.20271321,
+       1165099.60544502, 1353280.90287523, 1537148.98263965,
+       1054865.49794515, 1863022.22100039, 1357616.30038073,
+        780240.53892283,  820259.75953404, 1756092.40944391,
+       1069525.8452014 , 1886993.14774088, 1640739.73917004,
+       1072868.11444634, 1908836.21362323,  913304.60271711,
+       1637058.28033329, 1620725.74638773, 1518201.03458117,
+        675020.75358518,  750489.45024119,  670513.32137024,
+        890069.88532508, 1079293.00928632,  900757.34759356,
+       1231084.80873501,  928928.14000682,  540697.93586043,
+       1214581.12276504, 1060648.00956728, 1468472.98733865,
+       1267050.9050933 , 1444347.47340969, 1298583.62154773,
+       1182751.67449413, 1225192.19553724, 1369808.22651958,
+       1735952.21706243, 1330761.92174518, 1401983.4653229 ,
+       1374735.39681172,  846853.94001597, 1296920.95170962,
+       1434683.66803428, 1379886.52458325,  884040.96160374,
+        939716.49596716, 1385172.17071937, 1551427.01294039,
+        850068.04330501, 1037728.55757721, 1543402.62423474,
+       1183398.90023382, 1179786.34329167, 1298039.56314124,
+       1113232.0054411 ,  651285.07422711, 1844724.02989167,
+       1222843.10956696,  709704.91489566, 1425019.48845976,
+       1302389.50821194, 1231006.9209219 , 1100675.87692524,
+        519905.61215199, 1139563.72365057, 1709847.15307406,
+        794691.53270288, 1323279.47018335, 1547192.79926255,
+       1545442.18168166, 1705844.16070799, 1213240.68177948,
+       1125876.73765904,  987306.64191981, 1153634.69047416,
+       1632883.71802887, 1594767.69351641, 1557369.94199846,
+       1131574.52011857,  780018.79279261, 1582654.12352348,
+       1665474.42140505, 1258285.7926694 , 1213198.61603706,
+       1556269.80381034, 1708903.5562422 ,  511685.7353109 ,
+       1158928.7506833 , 1436699.63369589, 1160784.95248269,
+        646809.57445903, 1263409.590189  , 1615867.19822629,
+       1444052.90345073, 1245513.17045302, 1881644.95095632,
+        742794.69710161, 1821767.71986905,  972490.35391992,
+       1745336.61597522, 1684563.93598837, 1271467.72545913,
+        713605.28584346, 1803498.15207833,  546916.68710786,
+       2133963.53238436,  826671.06654446, 1746568.13238849,
+       1352572.43978754, 1176782.36273691, 1190416.55511831,
+       1685474.62338483, 1133354.66218544, 1024539.16273622,
+       1020240.20079351, 1140374.9001646 ,  988626.76785416,
+       1639609.52285014, 1211900.55934517,  506355.61367646,
+       1388829.11368997, 1125541.4053822 , 1332515.373456  ,
+       1038096.51802182, 1257810.39279464, 1445917.42431142,
+       1638908.3211578 , 1124085.54006953,  767890.62072627,
+        771326.07475694, 1336286.16086596, 1510764.03375743,
+       1379300.75804599, 1489696.69958357, 1022120.16319164,
+       2206778.93847448, 1479768.23912311, 1445757.86750574,
+       1024539.64361395,  557318.39633288, 1934852.383704  ,
+       1140716.44336162, 1253958.67446122, 1196109.53585469,
+       1069236.5089541 , 1622856.82734513, 1510187.57345142,
+       1320870.93458449, 1278282.19670119, 1648058.33881166,
+        793767.20258811, 1096615.99566774, 1281570.11915354,
+       1715176.22511885, 1299060.21888255, 1441561.91661068,
+       1277283.15409267, 1124936.01337588, 1686621.0073143 ,
+       1375792.44948378,  647005.84741187, 1497110.9553054 ,
+       1234016.55435995, 1305669.1212948 , 1112598.16899793,
+       1210350.32829168,  786156.44805102,  928545.55260778,
+       1252055.40123858, 1486800.49937222,  692309.75213451,
+       1220637.71222384, 1055303.32897129,  788599.61025446,
+        672873.29552813, 1005980.51299439,  924211.37399429,
+       1338995.98139896, 1168706.35896656,  980349.40684183,
+       1386795.47634582, 1460106.00224785, 1640748.14307618,
+       1517058.63571583, 1432469.20595009, 1434050.30775427,
+       1242784.30128716, 1260031.51507551, 1655671.90963323,
+       1297327.11377151, 1376919.9486493 , 1207704.89355024,
+       1343453.96473877, 1663625.53894606, 1547313.7957561 ,
+       1041200.04146295, 1350065.01957771, 1526459.03486008,
+       1480506.95026577, 1137348.16336584, 1532592.86030661,
+       1487778.44726158,  453750.85766677, 1296745.05908101,
+       1660802.42385959, 1213524.33262713,  927758.19951474,
+       1256331.51815562, 1336045.00652904, 1422897.2456305 ,
+        923713.31387929, 1704845.25894618, 1880369.02915361,
+        937841.72425503, 1460847.44714513, 1308009.57414803,
+       1412899.90417064, 1120977.83753404,  999858.70775036,
+       1366428.1429109 , 1212717.49483415,  944293.23399615,
+        436029.13508741, 1201217.34587968, 1391705.92629568,
+       1184220.9598942 , 1313579.43281585, 1339780.36620466,
+        990228.37386416,  982073.94336228, 1336608.5346129 ,
+        554217.25870977, 1559010.98000369, 1089279.63038502,
+       1265108.87116156, 1018601.26388139, 1052985.33174305,
+        708319.74551772,  816716.33738387,  809175.20356678,
+       1587160.60958689,  818351.77872206, 1362390.21873845,
+        969371.03058399, 1008977.09329486, 1259566.67610309,
+       1259960.69141919,  915294.28377223, 1011726.06790268,
+       1386258.75550418, 1687525.40167641, 1261538.08532018,
+        647998.18215832, 1439358.85855398, 1252662.83626916,
+       1316560.0451681 , 1087708.98084187, 1355004.50134313,
+       1106893.46209223, 1165553.50216046,  638291.49362318,
+       1251842.10775256, 1496072.30549298,  980873.18889513,
+       1304648.20658986, 1526250.23655531, 1123402.1327012 ,
+       1494359.0418606 ,  888000.68843743, 1393921.58630247,
+       1280164.67967675, 1082179.46792108, 1225557.91903473,
+       1121184.56783934, 1024335.94518954, 1417999.00054183,
+        883621.58615544, 1086751.96664457, 1372910.61253913,
+        793677.6011    , 1211785.95180862, 1028370.87109449,
+       1291572.5543836 , 1245166.65184532, 1247132.14631612,
+       1290150.68427318, 1733440.40569813, 1755244.08363444,
+       1183417.5342127 ,  962292.60405769, 1333772.71764106,
+       1198877.95555841, 1301307.18310465, 1691927.12440598,
+        694115.93027361, 1644850.48866729,  929847.22722478,
+        740460.5792097 , 1627730.34748143, 1382742.10412989,
+       1199412.42435387, 1876931.75885951, 1250731.53207634,
+       1380216.36778365, 1672575.33572692,  998659.89871926,
+       1241459.31047081, 1305951.22820401,  895839.88041653,
+        977245.91228177,  845164.24054763, 1403885.20003137,
+       1162743.23528572, 1289147.21704123, 1735928.04690299,
+       1520226.70595486, 1721114.31067663, 1106044.8492373 ,
+       1070144.81609184,  958413.61321527,  826093.91894925,
+        905031.3216307 , 1277447.44400802, 1061488.20493434,
+       1454262.51950168, 1044016.40551973,  792568.63697706,
+       1611776.20719911, 1319302.63909008, 1176271.90453299,
+       1199157.91080234, 1229776.13962206, 1190401.83042905,
+       1542135.02735538, 1291252.20247452, 1214491.24084312,
+        771260.38702555, 1125925.27843561,  623521.55934871,
+       1100596.07351085, 1485280.70958613, 1425384.00116102,
+       1072107.19265435, 1484941.14152175, 1375320.19149652,
+       1285997.53197097,  976164.73141636, 1236378.53654495,
+       1000943.23178996,  951603.18352775, 1090022.4483327 ,
+        691580.40034408,  848761.36957086, 1082730.96523662,
+       1049705.54435848, 1108972.49297767, 1417174.25085797,
+       1065121.1693258 , 1472979.36804813, 1182607.68143583,
+       1051685.16162639, 1262099.51684329, 1406541.17334631,
+        785472.86277019,  742635.64344748,  972358.59357155,
+       1503417.05053728, 1426353.00437632, 1153631.75598698,
+       1201391.60410432, 1493056.13243117, 1597464.13864538,
+       1682771.12463953, 1821428.16822834,  987718.62468692,
+       1048320.88222431, 1178957.87548537, 1209673.15659013,
+       1455806.78062196,  859938.07761026, 1222286.59600566,
+       1213794.92191853, 1811991.64843313, 1879192.79700536,
+       1095539.71199302, 1276739.44841956, 1358899.32425151,
+       1456880.60010002, 1518976.88779526,  607972.48783317,
+       1510943.7523716 , 1033565.87329021,  946129.49979784,
+       1354612.47391972, 1941930.07602066,  923774.27692776,
+       1492894.76848646,  644063.51181365,  984190.65381265,
+       1337486.704503  , 1424275.65734742, 1164134.69909659,
+       1486847.80527135, 1237033.46779537, 1650294.07886712,
+       1219731.08453762, 1495645.58840586, 1390567.86206284,
+       1046620.91557622, 1150470.95299574, 1387538.67531422,
+       1558209.76637303, 1738338.27884055, 1458394.27852758,
+       1231257.29511059, 1109216.98813045, 1073740.4289437 ,
+       1498893.16319495, 1396234.5342056 ,  953134.69497543,
+       1294648.25010262, 1146771.47226296, 1335105.43863206,
+        663493.38559999, 1441331.97805724, 1331891.71190404,
+       1299033.88470275, 1975126.22408591, 1818382.10791015,
+        635589.48221648, 1479830.36090672, 1251296.66755207,
+        715280.94952336, 1098524.25805448, 1461373.43975043,
+        706141.07301947, 1127301.46649572, 1023105.90008338,
+       1050734.95853498, 1566604.21516465, 1074159.47770152,
+       1045965.33182746, 1001915.95912831, 1161789.91738571,
+        920386.95258564, 1505233.23122978, 1810478.13712799,
+        966697.90710214, 1467392.17177148, 1315573.19580944,
+       1168166.09134923,  981919.12934661,  505869.70310167,
+       1321576.3882892 , 1263828.74192069, 1547821.7490337 ,
+       1093896.14293131, 1076725.47573584,  871832.39973515,
+        582536.51979667, 1353129.59847977, 1033212.84626559,
+       1655804.45362884, 1151805.64492535, 1825432.79754343,
+       1535635.85895225, 1198260.68220522, 1550520.12723863,
+       1509872.76313403, 1582320.41059096, 1269227.07562042,
+       1408279.60971935, 1041368.30922355, 1240041.57291559,
+        997565.46111357, 1510175.51480209, 1688691.72115688,
+       1168876.76620471,  789988.38448383, 1236437.91795691,
+        960600.13982779, 1311921.86602909,  842764.66159854,
+       1250360.4454846 ,  921755.77173495,  979023.42603998,
+       1320920.11302833, 1157390.29244178, 1760302.05465615,
+       1190466.90613259,  969093.28130915, 1291815.29221764,
+       1672072.15755103,  999837.42699397, 1215611.18161059,
+       1404577.651046  ,  613681.58858071, 1317411.54867951,
+        823970.1542631 , 1703125.73597044,  933926.9488354 ,
+       1137199.11570783,  569106.75765795, 1294760.10708948,
+       1442229.8051445 , 1299043.65584492, 1239000.82268083,
+       1112113.02653811,  635992.23609497, 1114512.1414425 ,
+       1533755.53347822, 1019643.54017362, 1088661.74733259,
+        836884.26828541, 1124744.15465077, 1607839.24877131,
+       1500724.55772223, 1372533.34057233, 1169884.69622041,
+        672600.1024945 , 1516098.33502597,  822541.67498559,
+       1078960.47305747, 1564991.53373413, 1162001.98207495,
+       1508595.08900596, 1369457.08559567, 1585945.04445205,
+       1047803.19420643, 1235300.5713675 , 1379814.76584822,
+       1843564.29705726, 1549915.09221874, 1508040.10466767,
+       1445716.26931433, 1256082.87650148, 1334222.80760887,
+       1427332.481704  , 1530265.78769085,  910402.952559  ,
+       1283852.56186099,  384697.71039027, 1154197.05190291,
+       1109331.67390934,  895133.48540413,  768958.85105874,
+        995397.44077764, 1074790.15405513, 1165239.71259339,
+       1550506.52977733, 1373561.48646322, 1110224.71216156,
+        835818.95043312, 1692370.04026318, 1478513.46775942,
+       2099774.2919203 , 1757439.78976485, 1125723.88028233,
+       1921037.99168822, 1196852.66905287,  636102.39598178,
+        698470.20494719, 1742072.19852749,  671795.57616343,
+       1544436.48415413,  899799.53513011,  772357.64346097,
+       1429871.6125083 , 1427106.74669545, 1047644.73263996,
+       1733663.78182278,  967709.28403967, 1543674.67570352,
+       1156571.65528593, 1689771.04431276, 1411641.46254891,
+       1557051.55295783,  985252.43256089, 1048446.93604087,
+       1297283.05784117,  953776.34889693, 1311954.07949727,
+       1189291.01597781, 1515380.50678299,  924803.32870949,
+       1151284.74152266, 1903171.51302312, 1197912.81381722,
+       1355414.4763576 , 1267579.88513761, 1551459.04186057,
+       1053368.56341298, 1614366.85544942, 1321291.06981738,
+       1207895.67061824,  584500.79977459,  798782.9281815 ,
+       1122639.48684174, 1200576.28724881, 1272681.22605966,
+       1173721.45732602, 1309969.09869378,  998374.09009731,
+       1111945.97977748, 1457354.42393614, 1144483.63811768,
+       1351194.61423752, 1496731.8972288 ,  850270.59741054,
+       1376807.78365303, 1576719.79671261, 1062181.7881776 ,
+       1446943.62934719, 1224425.17851874, 1097672.64170982,
+       1790248.1791866 , 1059085.89933225,  936432.87872338,
+       1250625.36813987, 1457019.46102888, 1560278.1419132 ,
+       1521250.42157252, 1021886.83303455,  530918.12672372,
+        691182.16401806, 1127214.87269592, 1201382.72654434,
+       1289121.72936825,  567779.4618981 , 1186462.9056098 ,
+       1166458.71643715, 1723639.85084698, 1825451.88107403,
+       1092665.52567372, 1464660.97374309, 1513299.44488687,
+       1353035.4961232 , 1405555.55833118, 1224655.57766815,
+       1598646.51033456, 1233592.53185168,  814555.85413014,
+       1284230.56083975, 1113398.7775722 , 1775237.19448459,
+       1518068.51139801,  744353.21639094, 1243976.22983412,
+        893306.43690813, 1694804.55894976, 1520492.6093133 ,
+       1528811.75484656, 1335095.89012784, 1391493.84172329,
+        509577.4474123 , 1580885.72142141, 2065547.93786857,
+        437736.77298564, 1421122.01804909, 1139476.62597959,
+       1491232.68818872,  947998.81536448,  833290.9102628 ,
+        869229.12420945,  545038.85695363,  831319.66574739,
+       1064147.68607189, 1490886.79511337, 1291260.18310726,
+       1227935.24788198,  965674.21694242, 1634760.28898396,
+       1219018.54950976, 1334172.10575499,  704207.95800352,
+       1103637.69329153, 1480288.80308928, 1213185.61834909,
+       1288142.86110647, 1357916.71184034, 1179298.95696165,
+       1484887.37732938, 1312331.16366007, 1494174.74498657,
+       1253684.1178251 ,  720660.68110816, 1609584.56248623,
+       1346814.0851155 , 1202122.1385215 , 1427869.13295058,
+       1160659.17241874, 1004539.14791287, 1204112.54136867,
+       1926191.84993978,  737646.18008295, 1004696.48404246,
+       1403797.89891372, 1665981.04058064,  978050.98854534,
+       1002607.02764009,  742310.14918893,  947154.51521608,
+       1234955.92195921, 1266372.65182822, 1604045.02305096,
+       1551308.93946315,  748981.40995205, 1743795.6311031 ,
+       1580590.54570719, 1679982.66437647,  978406.35098172,
+       1396018.89637615,  987251.63387184, 1645605.87363061,
+        803480.48987292, 1563927.18764507, 1427183.8269756 ,
+       1700047.5795575 , 1223450.68687352, 1126632.11998896,
+       1328268.67590097, 1223564.42485499, 1787891.83053872,
+        778080.40463326, 1393337.78782582, 1699428.47764452,
+       1475425.84466384,  902602.88479088, 1286003.80459218,
+       1114376.40207513, 1033160.99217017, 1386145.15863088,
+       1125488.04201556, 1219248.39032372, 1049646.66406838,
+       1428381.40891242, 1473071.36825804, 1528192.36642981,
+       1369066.6218251 , 1051910.92716404, 1640078.45263021,
+       1179802.63721317,  922559.03700383, 1050695.21122495,
+        642061.91258325, 1484432.20582464, 1005138.37523761,
+       1696149.58548116, 1046488.59567603, 1506293.51396936,
+       1590683.75285865, 2170473.40230055, 1306398.27916771,
+        988120.36745217, 1239853.6198666 , 1590251.27139417,
+        532564.12306392, 1631209.91930741, 1190692.08126216,
+       1503015.51283295,  841846.72240476, 1579646.64685102,
+        774231.63515775, 1451967.92193129, 1040263.11164952,
+       1377714.77334669, 1207329.43648081, 1116591.39632574,
+        588422.90871709, 1575545.90369605, 1384736.98133995,
+       1299753.36006892, 1159030.91220454, 1072933.47102213,
+       1378324.49116345,  986255.23683569, 1369259.24476021,
+       1180018.8288868 ,  820829.79826084, 1538479.2641172 ,
+        852583.54693737, 1572688.18103696, 1229028.06648855,
+        693146.69181082,  624346.81638169, 1693013.40713185,
+       1602361.55517646,  847532.85189675,  896260.45335112,
+       1279894.36297805, 1152116.13793517,  849509.65983618,
+        997752.84992442, 1169479.83747297,  996180.59286588,
+       1170709.04933571, 1507162.51516198, 1296514.35197962,
+        767725.9039988 , 1040434.68014385,  916540.69559751,
+       1210336.76335647, 1086602.12475376, 1035424.24794159,
+       1269983.34093118, 1340736.99662848, 1049967.66527995,
+       1411492.65808439, 1065642.73020297, 1252372.14711936,
+       1294056.71243587, 1520166.90732574, 1640092.4523033 ,
+       1252134.87795471,  923210.04611275, 1255060.47617587,
+        953026.17232814, 1100925.7163729 , 1238527.530081  ,
+        967295.56075016, 1057493.05929803, 1151852.97481984,
+       1607624.564354  ,  693229.10591577, 1935320.18051293,
+       1275536.28965597,  757686.64566102, 1228637.89949307,
+       1231871.13980906, 1023131.1600205 ,  893775.9180784 ,
+       1677583.03861489, 1606062.01654804, 1609032.35434288,
+       1308376.87923087, 1187021.23432525, 1120192.44368507,
+       1296582.0510369 , 1886259.27031041, 1716252.91874913,
+       1054673.4716054 ])</code></pre>
+</div>
+</div>
+</section>
+<section id="xgboost-regressor" class="level1">
+<h1>XGBoost Regressor</h1>
+<div id="3bdd6b2f" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the parameter grid</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>],</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>],</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'learning_rate'</span>: [<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>],</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'subsample'</span>: [<span class="fl">0.7</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>],</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'colsample_bytree'</span>: [<span class="fl">0.7</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>]</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize XGBoost regressor</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>xgb_reg <span class="op">=</span> xgb.XGBRegressor(objective <span class="op">=</span><span class="st">'reg:squarederror'</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup GridSearchCV</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>grid_search <span class="op">=</span> GridSearchCV(estimator<span class="op">=</span>xgb_reg, param_grid<span class="op">=</span>param_grid, cv<span class="op">=</span><span class="dv">5</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X_train, y_train)</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the best estimator</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>best_xgb <span class="op">=</span> grid_search.best_estimator_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="xgboost-regressor-model-evaluation" class="level1">
+<h1>XGBoost Regressor Model Evaluation</h1>
+<div id="6dd8d3af" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions using the best model</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> best_xgb.predict(X_test)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print evaluation metrics</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, predictions)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y_test, predictions)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'R-squared: </span><span class="sc">{</span>r2<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Best Parameters:'</span>, grid_search.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Squared Error: 11064311070.076391
+R-squared: 0.9100699796059779
+Best Parameters: {'colsample_bytree': 0.7, 'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 200, 'subsample': 0.9}</code></pre>
+</div>
+</div>
+<div id="ab02096e" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> np.sqrt(mse)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>mae <span class="op">=</span> mean_absolute_error(y_test, predictions)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Root Mean Squared Error: </span><span class="sc">{</span>rmse<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Absolute Error: </span><span class="sc">{</span>mae<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Root Mean Squared Error: 107444.14620312591
+Mean Absolute Error: 85927.5765781728</code></pre>
+</div>
+</div>
+</section>
+<section id="elastic-net-model" class="level1">
+<h1>Elastic Net Model</h1>
+<div id="d59b9d68" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize the features</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the Elastic Net model</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>elastic_net <span class="op">=</span> ElasticNet(random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the grid of parameters to search</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'alpha'</span>: [<span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>],</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'l1_ratio'</span>: [<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>]</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup GridSearchCV</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>grid_search <span class="op">=</span> GridSearchCV(estimator<span class="op">=</span>elastic_net, param_grid<span class="op">=</span>param_grid, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X_train_scaled, y_train)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the best estimator</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>best_elastic_net <span class="op">=</span> grid_search.best_estimator_</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> best_elastic_net.predict(X_test_scaled)</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Squared Error: 10100765132.277464
+R2 Score: 0.9179016200296809
+Best Parameters: {'alpha': 0.1, 'l1_ratio': 0.9}</code></pre>
+</div>
+</div>
+</section>
+<section id="elastic-net-model-evaluation" class="level1">
+<h1>Elastic Net Model Evaluation</h1>
+<div id="af30e6be" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate MSE</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, predictions)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y_test, predictions)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'R2 Score: </span><span class="sc">{</span>r2<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Best Parameters:'</span>, grid_search.best_params_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Squared Error: 11544244553.318697
+R2 Score: 0.9061691106171728
+Best Parameters: {'alpha': 0.1, 'l1_ratio': 0.9}</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
